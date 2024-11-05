@@ -1,5 +1,6 @@
 import Product from '../models/Product.js';
 import bcrypt from 'bcrypt';
+import Cart from '../models/Cart.js';
 /**
  * Controller for handling dashboard-related operations
  */

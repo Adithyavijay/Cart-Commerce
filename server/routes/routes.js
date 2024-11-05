@@ -18,8 +18,9 @@ router.get('/product/:id',productController.getProductById)
 
 // cart routes 
 
-router.get('/:userId', CartController.getCart);
+router.get('/cart/:userId', CartController.getCart);
 // Add item to cart
+
 router.post('/add', CartController.addToCart);
 // Remove item from cart
 router.post('/remove', CartController.removeFromCart);
@@ -27,7 +28,7 @@ router.post('/remove', CartController.removeFromCart);
 router.put('/update-quantity', CartController.updateQuantity);
 
 // Calculate discounts and final price
-router.post('/calculate-total', discountController.calculateTotal);
+router.post('/calculate-total', (req, res) => discountController.calculateTotal(req, res));
 
 
 

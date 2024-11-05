@@ -24,7 +24,7 @@ class  AuthController{
           })   
           
           await newUser.save();
-          res.json({ status : true , message : "User created successfully"})
+          res.json({ status : true , message : "User created successfully" , user : user})
     } catch (error) {
       console.log(error) 
       res.status(400).json({ status : false , message : error.message})
@@ -41,14 +41,13 @@ class  AuthController{
         if (!user) {
             throw new Error("Invalid email or password");
         } 
-        console.log(user)
 
         // 3. Verify password
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
             throw new Error("Invalid email or password");
         } 
-        return res.status(200).json({message : "user logged in successfully"})
+        return res.status(200).json({message : "user logged in successfully" , user : user })
 
     } catch (error) {
         console.error("Login controller error:", error);
